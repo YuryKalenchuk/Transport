@@ -1,4 +1,4 @@
-package utils;
+package dao.services;
 
 import com.google.gson.Gson;
 import entity.User;
@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class FileService {
     public void writeUsers(List<User> users) {

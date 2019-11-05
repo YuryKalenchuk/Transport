@@ -1,11 +1,9 @@
-package utils;
+package dao.services;
 
 import entity.User;
 import entity.Role;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class RegService {
 
@@ -31,6 +29,7 @@ public class RegService {
         String password = scanner.nextLine();
         user.setPassword(password);
         user.setRole(Role.USER);
+        user.setId(UUID.randomUUID().toString());
         FileService fs = new FileService();
         list = fs.readUsers();
         list.add(user);

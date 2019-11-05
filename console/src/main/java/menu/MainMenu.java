@@ -1,8 +1,9 @@
 package menu;
 
 import entity.Role;
-import utils.LoginServise;
-import utils.RegService;
+import dao.services.LoginServise;
+import dao.services.RegService;
+import entity.User;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -24,7 +25,8 @@ public class MainMenu {
             try {
                 switch (scanner.nextInt()) {
                     case 1:
-                        role = LoginServise.loginUser();
+                        User user = LoginServise.loginUser();
+                        role = user.getRole();
                         if (role != null) {
                             FabricMethod fabricMethod = new FabricMethod();
                             Menu menu = fabricMethod.getMenu(role);

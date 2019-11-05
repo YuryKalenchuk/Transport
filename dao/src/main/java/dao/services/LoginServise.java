@@ -1,4 +1,4 @@
-package utils;
+package dao.services;
 
 import entity.Role;
 import entity.User;
@@ -8,8 +8,9 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class LoginServise {
-    public static Role loginUser() {
+    public static User loginUser() {
         boolean flag = true;
+        User rUser =null;
         Role role = null;
         while (flag) {
             Scanner scanner = new Scanner(System.in);
@@ -31,12 +32,12 @@ public class LoginServise {
                     .collect(Collectors.toList());
             if (list.size() != 0 && list.get(0).getPassword().equals(loginUser.getPassword())) {
                 System.out.println("Welcome " + list.get(0).getName());
-                role = list.get(0).getRole();
+                rUser = list.get(0);
                 flag = false;
             } else {
                 System.out.println("Wrong name or password ");
             }
         }
-        return role;
+        return rUser;
     }
 }

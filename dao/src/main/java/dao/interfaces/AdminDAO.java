@@ -5,9 +5,9 @@ import entity.User;
 
 public interface AdminDAO {
     //Users
-    String getAllUsers();
+    void getAllUsers();
     void deleteUserByLogin(String login);
-    void editProfile(User user);
+    void editProfile();
     void addNewUser();
     //Stations
     String getAllStations();
