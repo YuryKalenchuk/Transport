@@ -1,4 +1,4 @@
-package dao.services;
+package services;
 
 import com.google.gson.Gson;
 import entity.User;

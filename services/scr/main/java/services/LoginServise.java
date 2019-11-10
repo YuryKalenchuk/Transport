@@ -1,4 +1,4 @@
-package dao.services;
+package services;
 
 import entity.Role;
 import entity.User;

@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.interfaces.AdminDAO;
-import dao.services.FileService;
+import services.FileService;
 import entity.User;
 
 import java.util.ArrayList;

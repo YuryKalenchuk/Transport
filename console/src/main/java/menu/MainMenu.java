@@ -1,8 +1,8 @@
 package menu;
 
 import entity.Role;
-import dao.services.LoginServise;
-import dao.services.RegService;
+import services.LoginServise;
+import services.RegService;
 import entity.User;
 
 import java.util.InputMismatchException;
