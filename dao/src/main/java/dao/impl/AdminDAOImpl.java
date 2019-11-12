@@ -1,77 +1,86 @@
 package dao.impl;
 
 import dao.interfaces.AdminDAO;
-import services.FileService;
+
+import dao.services.FileService;
+import entity.Station;
+import entity.Transport;
 import entity.User;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AdminDAOImpl implements AdminDAO {
 
-    public void getAllUsers() {
-        FileService fs=new FileService();
+    public List<User> getAllUsers() {
+
+        FileService fs = new FileService();
         List<User> list;
         list = fs.readUsers();
-        System.out.println(list);
+        return list;
     }
 
-    public void deleteUserByLogin(String login) {
-        FileService fs=new FileService();
+    public boolean deleteUserByLogin(String login) {
+        FileService fs = new FileService();
         List<User> list;
         list = fs.readUsers();
-        list=list.stream()
-                .filter(user ->! user.getLogin().equals(login))
+        list = list.stream()
+                .filter(user -> !user.getLogin().equals(login))
                 .collect(Collectors.toList());
         fs.writeUsers(list);
+        return false;
     }
 
-    @Override
-    public void editProfile() {
 
+    public boolean editProfile(User user) {
+        Scanner sc = new Scanner(System.in);
+
+
+        return false;
     }
 
-    public void editProfile(User user) {
-       Scanner sc = new Scanner(System.in);
+    public String addNewUser() {
 
-
-    }
-
-    public void addNewUser() {
-
-    }
-
-    public String getAllStations() {
         return null;
     }
 
-    public void deleteStationByName(String name) {
-
-    }
-
-    public void editStationIntineary(String stationName) {
-
-    }
-
-    public void addNewStation() {
-
-    }
-
-    public String getAllTransports() {
+    public List<Station> getAllStations() {
         return null;
     }
 
-    public void deleteTransportById(long id) {
+    public boolean deleteStationByName(String name) {
 
+        return false;
     }
 
-    public void editTransport(long id) {
+    public boolean editStationIntineary(String stationName) {
 
+        return false;
     }
 
-    public void addNewTransport() {
+    public String addNewStation() {
 
+        return null;
+    }
+
+    public List<Transport> getAllTransports() {
+        return null;
+    }
+
+    public boolean deleteTransportById(long id) {
+
+        return false;
+    }
+
+    public boolean editTransport(long id) {
+
+        return false;
+    }
+
+    public String addNewTransport() {
+
+        return null;
     }
 }

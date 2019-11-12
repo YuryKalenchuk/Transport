@@ -1,5 +1,5 @@
 *.iml
 console/target/
 dao/target/
-service/target/
+dao.services/target/
 .idea/

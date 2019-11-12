@@ -1,9 +1,8 @@
-package services;
-
+package dao.services;
 import entity.User;
 import entity.Role;
-
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RegService {
 
@@ -15,7 +14,7 @@ public class RegService {
     public static void inputUser() {
         Scanner scanner = new Scanner(System.in);
         User user = new User();
-        List<User> list = new ArrayList<>();
+        List<User> list;
         print("Input your name: ");
         String name = scanner.nextLine();
         user.setName(name);
@@ -32,6 +31,9 @@ public class RegService {
         user.setId(UUID.randomUUID().toString());
         FileService fs = new FileService();
         list = fs.readUsers();
+        while (list.stream().filter(u -> u.getId().equals(user.getId())).collect(Collectors.toList()).size() > 0) {
+            user.setId(UUID.randomUUID().toString());
+        }
         list.add(user);
         fs.writeUsers(list);
     }

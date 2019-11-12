@@ -1,24 +1,27 @@
 package dao.interfaces;
 
 import entity.Station;
+import entity.Transport;
 import entity.User;
+
+import java.util.List;
 
 public interface AdminDAO {
     //Users
-    void getAllUsers();
-    void deleteUserByLogin(String login);
-    void editProfile();
-    void addNewUser();
+    List<User> getAllUsers();
+    boolean deleteUserByLogin(String login);
+    boolean editProfile(User user);
+    String addNewUser();
     //Stations
-    String getAllStations();
-    void deleteStationByName(String name);
-    void editStationIntineary(String stationName);
-    void addNewStation();
+    List<Station> getAllStations();
+    boolean deleteStationByName(String name);
+    boolean editStationIntineary(String stationName);
+    String addNewStation();
     //Transport
-    String getAllTransports();
-    void deleteTransportById(long id);
-    void editTransport(long id);
-    void addNewTransport();
+    List<Transport> getAllTransports();
+    boolean deleteTransportById(long id);
+    boolean editTransport(long id);
+    String addNewTransport();
 
 
 }

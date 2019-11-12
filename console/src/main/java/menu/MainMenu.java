@@ -1,8 +1,8 @@
 package menu;
 
 import entity.Role;
-import services.LoginServise;
-import services.RegService;
+import dao.services.LoginServise;
+import dao.services.RegService;
 import entity.User;
 
 import java.util.InputMismatchException;
@@ -14,14 +14,14 @@ public class MainMenu {
         System.out.println("1 - Login");
         System.out.println("2 - Registration ");
         System.out.println("0 - Exit");
-        System.out.println("\nInput your variant: ");
+        System.out.println("\nEnter your choise: ");
     }
 
     public static void go() {
         while (true) {
             printMenu();
             Scanner scanner = new Scanner(System.in);
-            Role role = null;
+            Role role;
             try {
                 switch (scanner.nextInt()) {
                     case 1:
