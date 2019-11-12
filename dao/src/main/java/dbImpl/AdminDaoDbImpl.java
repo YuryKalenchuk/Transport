@@ -57,24 +57,43 @@ public class AdminDaoDbImpl implements AdminDAO {
 
     @Override
     public boolean editProfile(User user) {
-        String sql = "UPDATE  mydbtest.users set name = ?, email = ?, password = ?, login = ? where id=?;";
+        String updateSql = "UPDATE  mydbtest.users set name = ?, email = ?, password = ?, login = ? where id=?;";
+        String selectSql = "select * from mydbtest.users where id like '"+user.getId()+"'";
+        User dbUser = new User();
         try (Connection conn = DBUtils.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             Statement st = conn.createStatement();
+             PreparedStatement ps = conn.prepareStatement(updateSql);
+             Statement st = conn.createStatement()
 
-             ) {
-            st.executeQuery("select * from users where id = '1aa'" );
+        ) {
+            ResultSet rs = st.executeQuery(selectSql);
+while (rs.next()){
+    dbUser.setName(rs.getString("name"));
+    dbUser.setEmail(rs.getString("email"));
+    dbUser.setPassword(rs.getString("password"));
+    dbUser.setLogin(rs.getString("login"));
+}
             if (user.getName() != null) {
                 ps.setString(1, user.getName());
+            } else {
+                ps.setString(1, dbUser.getName());
             }
             if (user.getEmail() != null) {
                 ps.setString(2, user.getEmail());
             }
+            else {
+                ps.setString(2, dbUser.getEmail());
+            }
             if (user.getPassword() != null) {
                 ps.setString(3, user.getPassword());
             }
+            else {
+                ps.setString( 3, dbUser.getPassword());
+            }
             if (user.getLogin() != null) {
                 ps.setString(4, user.getLogin());
+            }
+            else {
+                ps.setString(4, dbUser.getLogin());
             }
 
             ps.setString(5, user.getId());
