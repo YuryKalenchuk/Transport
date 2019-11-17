@@ -1,4 +1,4 @@
-package dao.services;
+package dao.utils;
 
 import com.google.gson.Gson;
 import entity.User;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class FileService {
+public class FileSaveUtils {
     public void writeUsers(List<User> users) {
         Gson gson = new Gson();
         FileWriter fw = null;

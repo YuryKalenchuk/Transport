@@ -1,4 +1,4 @@
-package dao.services;
+package dao.utils;
 
 import entity.Role;
 import entity.User;
@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class LoginServise {
+public class LoginUtils {
     public static User loginUser() {
         boolean flag = true;
         User rUser =null;
         Role role = null;
         while (flag) {
             Scanner scanner = new Scanner(System.in);
-            FileService fs = new FileService();
+            FileSaveUtils fs = new FileSaveUtils();
             User loginUser = new User();
             List<User> list;
             System.out.println("Enter Your Login or Enter 0 to Exit");

@@ -1,10 +1,14 @@
-package dao.services;
+package dao.utils;
+
+import dao.utils.FileSaveUtils;
 import entity.User;
 import entity.Role;
+
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class RegService {
+public class RegUtils {
 
 
     private static void print(String message) {
@@ -19,7 +23,13 @@ public class RegService {
         String name = scanner.nextLine();
         user.setName(name);
         print("Input your email: ");
-        String email = scanner.nextLine();
+        ValidateEmail valid = new ValidateEmail();
+        String email;
+        email = scanner.nextLine();
+        while (!valid.validate(email)){
+            System.out.println("Wrong email!!! Try Again ");
+            email = scanner.nextLine();
+        }
         user.setEmail(email);
         print("Input your login:");
         String login = scanner.nextLine();
@@ -29,7 +39,7 @@ public class RegService {
         user.setPassword(password);
         user.setRole(Role.USER);
         user.setId(UUID.randomUUID().toString());
-        FileService fs = new FileService();
+        FileSaveUtils fs = new FileSaveUtils();
         list = fs.readUsers();
         while (list.stream().filter(u -> u.getId().equals(user.getId())).collect(Collectors.toList()).size() > 0) {
             user.setId(UUID.randomUUID().toString());

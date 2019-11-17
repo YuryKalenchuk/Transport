@@ -1,7 +1,7 @@
 package dbImpl;
 
 import dao.interfaces.AdminDAO;
-import dao.services.DBUtils;
+import dao.utils.DBUtils;
 import entity.Role;
 import entity.Station;
 import entity.Transport;
@@ -58,7 +58,7 @@ public class AdminDaoDbImpl implements AdminDAO {
     @Override
     public boolean editProfile(User user) {
         String updateSql = "UPDATE  mydbtest.users set name = ?, email = ?, password = ?, login = ? where id=?;";
-        String selectSql = "select * from mydbtest.users where id like '"+user.getId()+"'";
+        String selectSql = "select * from mydbtest.users where id like '" + user.getId() + "'";
         User dbUser = new User();
         try (Connection conn = DBUtils.getConnection();
              PreparedStatement ps = conn.prepareStatement(updateSql);
@@ -66,12 +66,12 @@ public class AdminDaoDbImpl implements AdminDAO {
 
         ) {
             ResultSet rs = st.executeQuery(selectSql);
-while (rs.next()){
-    dbUser.setName(rs.getString("name"));
-    dbUser.setEmail(rs.getString("email"));
-    dbUser.setPassword(rs.getString("password"));
-    dbUser.setLogin(rs.getString("login"));
-}
+            while (rs.next()) {
+                dbUser.setName(rs.getString("name"));
+                dbUser.setEmail(rs.getString("email"));
+                dbUser.setPassword(rs.getString("password"));
+                dbUser.setLogin(rs.getString("login"));
+            }
             if (user.getName() != null) {
                 ps.setString(1, user.getName());
             } else {
@@ -79,20 +79,17 @@ while (rs.next()){
             }
             if (user.getEmail() != null) {
                 ps.setString(2, user.getEmail());
-            }
-            else {
+            } else {
                 ps.setString(2, dbUser.getEmail());
             }
             if (user.getPassword() != null) {
                 ps.setString(3, user.getPassword());
-            }
-            else {
-                ps.setString( 3, dbUser.getPassword());
+            } else {
+                ps.setString(3, dbUser.getPassword());
             }
             if (user.getLogin() != null) {
                 ps.setString(4, user.getLogin());
-            }
-            else {
+            } else {
                 ps.setString(4, dbUser.getLogin());
             }
 
