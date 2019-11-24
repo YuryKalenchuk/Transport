@@ -2,7 +2,7 @@ package dao.impl;
 
 import dao.interfaces.AdminDAO;
 
-import dao.utils.FileSaveUtils;
+import dao.utils.FileUtils;
 import entity.Station;
 import entity.Transport;
 import entity.User;
@@ -16,14 +16,14 @@ public class AdminDAOImpl implements AdminDAO {
 
     public List<User> getAllUsers() {
 
-        FileSaveUtils fs = new FileSaveUtils();
+        FileUtils fs = new FileUtils();
         List<User> list;
         list = fs.readUsers();
         return list;
     }
 
     public boolean deleteUserByLogin(String login) {
-        FileSaveUtils fs = new FileSaveUtils();
+        FileUtils fs = new FileUtils();
         List<User> list;
         list = fs.readUsers();
         list = list.stream()

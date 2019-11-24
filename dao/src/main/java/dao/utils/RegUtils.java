@@ -1,11 +1,9 @@
 package dao.utils;
 
-import dao.utils.FileSaveUtils;
 import entity.User;
 import entity.Role;
 
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class RegUtils {
@@ -39,7 +37,7 @@ public class RegUtils {
         user.setPassword(password);
         user.setRole(Role.USER);
         user.setId(UUID.randomUUID().toString());
-        FileSaveUtils fs = new FileSaveUtils();
+        FileUtils fs = new FileUtils();
         list = fs.readUsers();
         while (list.stream().filter(u -> u.getId().equals(user.getId())).collect(Collectors.toList()).size() > 0) {
             user.setId(UUID.randomUUID().toString());

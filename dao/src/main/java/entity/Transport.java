@@ -1,13 +1,12 @@
 package entity;
 
-import java.util.Calendar;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 public class Transport extends BaseEntity {
     private String name;
-    private List<String> route;
-    private List<Integer> routePing;
-    private Calendar startTime;
+    private Map<String,LocalTime> transportIntineary;
 
     public String getName() {
         return name;
@@ -17,27 +16,11 @@ public class Transport extends BaseEntity {
         this.name = name;
     }
 
-    public List<String> getRoute() {
-        return route;
+    public Map<String,LocalTime> getStationNames() {
+        return transportIntineary;
     }
 
-    public void setRoute(List<String> route) {
-        this.route = route;
-    }
-
-    public List<Integer> getRoutePing() {
-        return routePing;
-    }
-
-    public void setRoutePing(List<Integer> routePing) {
-        this.routePing = routePing;
-    }
-
-    public Calendar getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Calendar startTime) {
-        this.startTime = startTime;
+    public void setTransportIntineary(Map<String, LocalTime> transportIntineary) {
+        this.transportIntineary = transportIntineary;
     }
 }

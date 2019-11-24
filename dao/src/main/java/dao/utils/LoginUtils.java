@@ -14,7 +14,7 @@ public class LoginUtils {
         Role role = null;
         while (flag) {
             Scanner scanner = new Scanner(System.in);
-            FileSaveUtils fs = new FileSaveUtils();
+            FileUtils fs = new FileUtils();
             User loginUser = new User();
             List<User> list;
             System.out.println("Enter Your Login or Enter 0 to Exit");
