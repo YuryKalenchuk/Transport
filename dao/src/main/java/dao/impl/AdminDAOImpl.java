@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.interfaces.AdminDAO;
 
+import dao.interfaces.UserCRUT;
 import dao.utils.FileUtils;
 import entity.Station;
 import entity.Transport;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class AdminDAOImpl implements AdminDAO {
+public class AdminDAOImpl implements UserCRUT {
 
     public List<User> getAllUsers() {
 
@@ -46,41 +47,4 @@ public class AdminDAOImpl implements AdminDAO {
         return null;
     }
 
-    public List<Station> getAllStations() {
-        return null;
-    }
-
-    public boolean deleteStationByName(String name) {
-
-        return false;
-    }
-
-    public boolean editStationIntineary(String stationName) {
-
-        return false;
-    }
-
-    public String addNewStation() {
-
-        return null;
-    }
-
-    public List<Transport> getAllTransports() {
-        return null;
-    }
-
-    public boolean deleteTransportById(long id) {
-
-        return false;
-    }
-
-    public boolean editTransport(long id) {
-
-        return false;
-    }
-
-    public String addNewTransport() {
-
-        return null;
-    }
 }

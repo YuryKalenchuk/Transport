@@ -1,6 +1,7 @@
 package dbImpl;
 
 import dao.interfaces.AdminDAO;
+import dao.interfaces.UserCRUT;
 import dao.utils.DBUtils;
 import entity.Role;
 import entity.Station;
@@ -11,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDaoDbImpl implements AdminDAO {
+public class UserCRUDDbImpl implements UserCRUT {
     @Override
     public List<User> getAllUsers() {
         List<User> list = new ArrayList<>();
@@ -42,7 +43,6 @@ public class AdminDaoDbImpl implements AdminDAO {
                 list.add(user);
             }
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,6 @@ public class AdminDaoDbImpl implements AdminDAO {
 
     @Override
     public boolean deleteUserByLogin(String login) {
-
         return false;
     }
 
@@ -63,7 +62,6 @@ public class AdminDaoDbImpl implements AdminDAO {
         try (Connection conn = DBUtils.getConnection();
              PreparedStatement ps = conn.prepareStatement(updateSql);
              Statement st = conn.createStatement()
-
         ) {
             ResultSet rs = st.executeQuery(selectSql);
             while (rs.next()) {
@@ -92,7 +90,6 @@ public class AdminDaoDbImpl implements AdminDAO {
             } else {
                 ps.setString(4, dbUser.getLogin());
             }
-
             ps.setString(5, user.getId());
             int rowCount = ps.executeUpdate();
             if (rowCount == 1) {
@@ -110,43 +107,5 @@ public class AdminDaoDbImpl implements AdminDAO {
         return null;
     }
 
-    @Override
-    public List<Station> getAllStations() {
-        return null;
-    }
 
-    @Override
-    public boolean deleteStationByName(String name) {
-        return false;
-    }
-
-    @Override
-    public boolean editStationIntineary(String stationName) {
-        return false;
-    }
-
-    @Override
-    public String addNewStation() {
-        return null;
-    }
-
-    @Override
-    public List<Transport> getAllTransports() {
-        return null;
-    }
-
-    @Override
-    public boolean deleteTransportById(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean editTransport(long id) {
-        return false;
-    }
-
-    @Override
-    public String addNewTransport() {
-        return null;
-    }
 }
