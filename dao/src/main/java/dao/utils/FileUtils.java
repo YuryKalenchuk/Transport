@@ -52,7 +52,6 @@ public class FileUtils {
             Station[] stationArr = new Station[stations.size()];
             stations.toArray(stationArr);
             String line = gson.toJson(stationArr, Station[].class);
-            System.out.println(line);
             fw.write(line);
             fw.close();
         } catch (IOException e) {
@@ -83,7 +82,6 @@ public class FileUtils {
             Transport[] transportArr = new Transport[transports.size()];
             transports.toArray(transportArr);
             String line = gson.toJson(transportArr, Transport[].class);
-            System.out.println(line);
             fw.write(line);
             fw.close();
         } catch (IOException e) {

@@ -1,11 +1,8 @@
 package dbImpl;
 
-import dao.interfaces.AdminDAO;
 import dao.interfaces.UserCRUT;
 import dao.utils.DBUtils;
 import entity.Role;
-import entity.Station;
-import entity.Transport;
 import entity.User;
 
 import java.sql.*;

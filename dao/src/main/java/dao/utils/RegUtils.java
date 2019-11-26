@@ -1,9 +1,11 @@
 package dao.utils;
 
-import entity.User;
 import entity.Role;
+import entity.User;
 
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class RegUtils {

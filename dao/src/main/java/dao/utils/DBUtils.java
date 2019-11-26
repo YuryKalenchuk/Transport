@@ -1,6 +1,8 @@
 package dao.utils;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBUtils {
     public static final String DB_URL = "jdbc:postgresql://localhost:5433/postgres";

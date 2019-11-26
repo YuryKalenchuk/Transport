@@ -1,9 +1,6 @@
 package entity;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Station extends BaseEntity {
@@ -17,6 +14,11 @@ public class Station extends BaseEntity {
 
     public Station() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Station " + name + " " + intineary + '}';
     }
 
     public String getName() {

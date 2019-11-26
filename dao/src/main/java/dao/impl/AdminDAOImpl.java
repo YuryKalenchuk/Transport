@@ -1,13 +1,8 @@
 package dao.impl;
 
-import dao.interfaces.AdminDAO;
-
 import dao.interfaces.UserCRUT;
 import dao.utils.FileUtils;
-import entity.Station;
-import entity.Transport;
 import entity.User;
-
 
 import java.util.List;
 import java.util.Scanner;
