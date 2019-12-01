@@ -1,6 +1,6 @@
 package dbImpl;
 
-import dao.interfaces.UserCRUT;
+import dao.interfaces.UserCRUD;
 import dao.utils.DBUtils;
 import entity.Role;
 import entity.User;
@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserCRUDDbImpl implements UserCRUT {
+public class UserCRUDDbImpl implements UserCRUD {
     @Override
     public List<User> getAllUsers() {
         List<User> list = new ArrayList<>();
@@ -100,9 +100,11 @@ public class UserCRUDDbImpl implements UserCRUT {
     }
 
     @Override
-    public String addNewUser() {
-        return null;
+    public boolean addNewUser(User user) {
+        return false;
     }
+
+
 
 
 }

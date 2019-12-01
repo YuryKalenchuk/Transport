@@ -1,16 +1,15 @@
 package impl;
 
-
 import dao.impl.TransportCRUDFileImpl;
+import dao.impl.UserCRUDFileImpl;
 import dao.utils.FileUtils;
 import entity.Station;
 import entity.Transport;
+import entity.User;
 import interfaces.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
@@ -32,7 +31,7 @@ public class UserServiceImpl implements UserService {
         String fStartStationName = startStationName.toUpperCase();
         String fFinishStationName = finishStationName.toUpperCase();
         List<Transport> list = new ArrayList<>();
-        TransportCRUDFileImpl trudf=new TransportCRUDFileImpl();
+        TransportCRUDFileImpl trudf = new TransportCRUDFileImpl();
         list = trudf.getAllTransports();
         list = list.stream().filter(transport -> transport.getTransportIntineary().containsKey(fStartStationName))
                 .filter(transport -> transport.getTransportIntineary().containsKey(fFinishStationName))
@@ -47,9 +46,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean editProfile() {
-
-        return false;
+    public boolean editProfile(User user) {
+        UserCRUDFileImpl ucfi = new UserCRUDFileImpl();
+        return ucfi.editProfile(user);
     }
 
     @Override

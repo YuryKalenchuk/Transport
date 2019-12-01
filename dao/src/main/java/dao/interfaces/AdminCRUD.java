@@ -2,7 +2,7 @@ package dao.interfaces;
 
 import entity.User;
 
-public interface AdminDAO {
+public interface AdminCRUD {
 
     boolean setUserAsAdmin(User user);
 

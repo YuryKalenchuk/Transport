@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TransportCRUD {
     List<Transport> getAllTransports();
-    boolean deleteTransportById(long id);
-    boolean editTransport(long id);
-    String addNewTransport();
+    boolean deleteTransportById(String id);
+    boolean editTransport(Transport transport);
+    String addNewTransport(Transport transport);
 }

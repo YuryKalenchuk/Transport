@@ -1,14 +1,21 @@
 package menu;
 
+import dao.impl.UserCRUDFileImpl;
+import dao.utils.ValidateEmail;
+import entity.User;
 import impl.UserServiceImpl;
 import interfaces.UserService;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class UserMenu implements Menu {
     private UserService userService = new UserServiceImpl();
-    Scanner sc = new Scanner(System.in);
+
 
     @Override
     public void printTextMenu() {
@@ -51,6 +58,39 @@ public class UserMenu implements Menu {
                         System.out.println(userService.getTransportToStation(start,finish));
                         break;
                     case "3":
+                        User user = new UserCRUDFileImpl().getAllUsers().stream().filter(user1 -> user1.getId().equalsIgnoreCase(MainMenu.sessionId)).collect(Collectors.toList()).get(0);
+                        User newUser = new User();
+                        Pattern patternName = Pattern.compile("[a-zA-Z0-9]{3}");
+                        System.out.println("Enter new name alfabet and numbers only, 3 char minimum");
+                        String newName = sc.next();
+                        Matcher matcher ;
+                        while (patternName.matcher(newName).matches()){
+                            newName = sc.next();
+                        }
+                        System.out.println("Enter new email");
+                        String newEmail = sc.next();
+                        ValidateEmail valid =new ValidateEmail();
+                        while (!valid.validate(newEmail)){
+                            System.out.println("Wrong Email format, try again! ");
+                            newEmail=sc.next();
+                        }
+                        System.out.println("Enter new password (6+ char)");
+                        String newPsw =sc.next();
+                        while(newPsw.length()<6){
+                            newPsw=sc.next();
+                        }
+                        newUser.setName(newName);
+                        newUser.setPassword(newPsw);
+                        newUser.setEmail(newEmail);
+                        newUser.setId(user.getId());
+                        newUser.setLogin(user.getLogin());
+                        UserServiceImpl usi = new UserServiceImpl();
+                       if( usi.editProfile(newUser)){
+                           System.out.println("Success");
+                       }
+                       else {
+                           System.out.println("Error");
+                       }
                         break;
                     case "4":
                         break;

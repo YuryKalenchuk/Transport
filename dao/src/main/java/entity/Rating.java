@@ -1,6 +1,7 @@
 package entity;
 
 public class Rating extends BaseEntity {
+
     private int avgRating;
     private int countRate;
 

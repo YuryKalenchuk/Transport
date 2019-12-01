@@ -39,22 +39,32 @@ public class StationCRUDFileImpl implements StationCRUD {
     }
 
     @Override
-    public boolean editStationIntineary(String stationId) {
+    public boolean editStation(Station stationApp) {
         FileUtils fu = new FileUtils();
         List<Station> list = fu.readStations();
-        Station st = new Station();
-        st=list.stream().filter(station -> station.getName().equalsIgnoreCase(stationId)).collect(Collectors.toList()).get(0);
-        if(st == null){
+        Station stDb;
+        stDb = list.stream().filter(station -> station.getId().equals(stationApp.getId())).collect(Collectors.toList()).get(0);
+        if (stDb == null) {
             System.out.println("Wrong station ID");
             return false;
-        }
-        else{
-
+        } else {
+            list.removeIf(station -> station.getId().equals(stationApp));
+            list.add(stationApp);
+            fu.writeStations(list);
+            return true;
         }
     }
 
     @Override
-    public String addNewStation() {
-        return null;
+    public String addNewStation(Station st) {
+        FileUtils fu = new FileUtils();
+        List<Station> list = fu.readStations();
+        if (st != null) {
+            list.add(st);
+            fu.writeStations(list);
+            return st.getId();
+        } else {
+            return "Error!!!";
+        }
     }
 }

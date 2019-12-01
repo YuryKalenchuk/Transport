@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 
 public class MainMenu {
+    public static String sessionId;
+
     public static void printMenu() {
         System.out.println("1 - Login");
         System.out.println("2 - Registration ");
@@ -22,15 +24,18 @@ public class MainMenu {
             printMenu();
             Scanner scanner = new Scanner(System.in);
             Role role;
+
             try {
                 switch (scanner.nextInt()) {
                     case 1:
                         User user = LoginUtils.loginUser();
-                        if (user != null){
+                        if (user != null) {
                             role = user.getRole();
+                            sessionId = user.getId();
+                        } else {
+                            role = null;
                         }
-                        else {role = null;}
-                            if (role != null) {
+                        if (role != null) {
                             FabricMethod fabricMethod = new FabricMethod();
                             Menu menu = fabricMethod.getMenu(role);
                             menu.printMenu();
